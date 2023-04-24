@@ -1,2 +1,5 @@
 ﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
-Console.WriteLine("Ільєнко А.С.\nФакультет інформаційних технологій\nІнженерія програмного забезпечення");
+
+string[] text = Console.ReadLine()!.Split(" ");
+Array.Reverse(text);
+Console.WriteLine(String.Join(" ", text));
