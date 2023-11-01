@@ -1,0 +1,39 @@
+.notifications {
+    position: absolute;
+    color: #ffffff;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    z-index: 1000000;
+    &__item {
+        font-size: 18px;
+        margin: 10px;
+        will-change: opacity, transform;
+        animation: .8s ease appearanceNotification forwards;
+        &.disappearance {
+            animation: .8s ease disappearanceNotification forwards;
+        }
+    }
+}
+
+@keyframes appearanceNotification {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes disappearanceNotification {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}

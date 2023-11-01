@@ -1,0 +1,71 @@
+.navbar {
+    display: flex;
+    justify-content: end;
+    z-index: 999;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: opacity, scale;
+    animation: .8s ease appearanceNavBar forwards;
+    &.disappearance {
+        animation: .8s ease disappearanceNavBar forwards;
+    }
+    &__menu {
+        position: relative;
+        button {
+            background: none;
+            border: none;
+            color: #ffffff;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        &_button {
+            will-change: opacity;
+            transition: all .3s ease;
+        }
+        &_buttons {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            will-change: opacity;
+            opacity: 0;
+            pointer-events: none;
+            transition: all .3s ease;
+        }
+        &.active {
+            .navbar__menu_button {
+                opacity: 0;
+                pointer-events: none;
+            }
+            .navbar__menu_buttons {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+@keyframes appearanceNavBar {
+    0% {
+        opacity: 0;
+        scale: .8;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes disappearanceNavBar {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    100% {
+        opacity: 0;
+        scale: .8;
+    }
+}
