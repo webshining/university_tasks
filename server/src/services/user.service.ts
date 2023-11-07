@@ -1,6 +1,6 @@
-import { FindOptionsWhere } from "typeorm";
+import { DeepPartial, FindOptionsWhere } from "typeorm";
 import AppDataSource from "../db";
-import { CreateUserDto, UpdateUserDto } from "../dto/users.dto";
+import { CreateUserDto } from "../dto/users.dto";
 import { User } from "../models/user.entity";
 
 class UserService {
@@ -23,7 +23,7 @@ class UserService {
 		return this.userRepository.delete(options);
 	};
 
-	update = async (user: User, updated_user: UpdateUserDto): Promise<User> => {
+	update = async (user: User, updated_user: DeepPartial<User>): Promise<User> => {
 		await this.userRepository.save({ ...user, ...updated_user });
 		return this.getOne({ id: user.id }) as Promise<User>;
 	};

@@ -1,12 +1,12 @@
 import { Exclude, classToPlain } from "class-transformer";
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, Generated, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: "users" })
 export class User {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({ type: "varchar", default: "" })
+	@Column({ type: "varchar", nullable: false })
 	name: string;
 
 	@Column({ type: "varchar", nullable: false, unique: true })
@@ -15,6 +15,14 @@ export class User {
 	@Exclude()
 	@Column({ type: "varchar", nullable: false })
 	password: string;
+
+	@Column({ type: "boolean", default: false })
+	isConfirmed: boolean;
+
+	@Exclude()
+	@Column()
+	@Generated("uuid")
+	confirmationLink: string;
 
 	@CreateDateColumn()
 	created_at: Date;

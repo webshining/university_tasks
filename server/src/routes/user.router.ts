@@ -1,13 +1,15 @@
 import { Router } from "express";
+import { param } from "express-validator";
 import UserController from "../controllers/user.controller";
 import AuthMiddleware from "../middlewares/auth.middleware";
+import ErrorMiddleware from "../middlewares/error.middleware";
 const router = Router();
 
+const idParamValidation = [param("id").isNumeric().withMessage("not valid id"), ErrorMiddleware];
+const linkParamValidation = [param("link").isString().withMessage("not valid link"), ErrorMiddleware];
+
 router.get("/", AuthMiddleware, UserController.many);
-router.post("/", UserController.getOrCreate);
-router.delete("/", AuthMiddleware, UserController.delete);
-router.put("/", AuthMiddleware, UserController.update);
-router.get("/refresh", UserController.refresh);
-router.get("/logout", UserController.logout);
+router.get("/:id", AuthMiddleware, idParamValidation, UserController.one);
+router.get("/confirm/:link", linkParamValidation, UserController.confirm);
 
 export default router;

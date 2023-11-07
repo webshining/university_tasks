@@ -1,8 +1,7 @@
-import { Request, Response } from "express";
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
 
-export default async (req: Request, res: Response, next: any) => {
+export default async (req: any, res: any, next: any) => {
 	const authService = new AuthService();
 	const userService = new UserService();
 

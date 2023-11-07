@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const PORT: number = Number(process.env.PORT) || 4000;
+export const FRONTEND_URI: string = String(process.env.FRONTEND_URI);
 
 export const DB_NAME: string = process.env.DB_NAME || "database";
 
@@ -18,3 +19,8 @@ export const ACCESS_TOKEN_EXPIRE_MINUTES: number = Number(process.env.ACCESS_TOK
 export const REFRESH_TOKEN_EXPIRE_MINUTES: number = Number(process.env.REFRESH_TOKEN_EXPIRE_MINUTES) || 60;
 
 export const LOGGING: boolean = process.env.LOGGING === "true";
+
+export const SMTP_HOST: string = String(process.env.SMTP_HOST);
+export const SMTP_PORT: number = Number(process.env.SMTP_PORT);
+export const SMTP_USER: string = String(process.env.SMTP_USER);
+export const SMTP_PASS: string = String(process.env.SMTP_PASS);
