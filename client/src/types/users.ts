@@ -18,6 +18,7 @@ export interface UserState {
 }
 
 export interface UserAuthBody {
+	name: string;
 	email: string;
 	password: string;
 }

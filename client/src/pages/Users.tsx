@@ -5,11 +5,11 @@ import NavBar from "../components/NavBar";
 import UsersTable from "../components/UsersTable";
 
 const Users = () => {
+	const { user, isLoading } = useAppSelector((state) => state.user);
 	const navigate = useNavigate();
-	const { isLoading, user } = useAppSelector((state) => state.user);
 	useEffect(() => {
 		if (!isLoading && !user) navigate("/auth");
-	}, [isLoading, user]);
+	}, [user, isLoading]);
 	return (
 		<>
 			<NavBar />

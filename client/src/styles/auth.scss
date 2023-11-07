@@ -4,16 +4,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: .8s ease appearanceAuth;
     will-change: opacity, scale;
-    animation: .8s ease appearanceAuth forwards;
     &.disappearance {
         animation: .8s ease disappearanceAuth forwards;
     }
     form {
+        position: relative;
+        width: 300px;
+    }
+    &__form {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+        transition: all .6s ease-in-out;
+        will-change: transform, scale, opacity;
+        &.login, &.register {
+            position: absolute;
+            opacity: 0;
+            scale: .8;
+            pointer-events: none;
+        }
+        &.login {
+            transform: translateX(-330px) rotateX(-20deg) rotateY(-20deg);
+        }
+        &.register {
+            transform: translateX(330px) rotateX(20deg) rotateY(-20deg);
+        }
+        &.active {
+            opacity: 1;
+            scale: 1; 
+            transform: translate(0, -50%);
+            pointer-events: auto;
+        }
         input,button {
-            background: linear-gradient(to bottom right, rgba(107, 107, 107, 0.3), rgba(150, 150, 150, 0.3), rgba(255, 255, 255, .3));
+            background: linear-gradient(to bottom right, rgba(73, 72, 72, 0.3), rgba(138, 138, 138, 0.418));
             color: #ffffffc0;
             border: none;
             border-radius: 10px;
@@ -24,15 +49,18 @@
         input {
             font-size: 18px;
             width: 300px;
-            margin: 10px 0;
             &:focus {
                 outline: none;
             }
         }
+        p {
+            color: #ffffff;
+            font-weight: 500;
+            cursor: pointer;
+        }
         button {
             font-size: 20px;
             font-weight: 600;
-            margin-top: 25px;
             cursor: pointer;
         }
     }

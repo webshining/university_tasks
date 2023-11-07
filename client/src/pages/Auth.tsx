@@ -5,7 +5,7 @@ import AuthForm from "../components/AuthForm";
 import "../styles/auth.scss";
 
 const Auth = () => {
-	const { isLoading, user } = useAppSelector((state) => state.user);
+	const { user, isLoading } = useAppSelector((state) => state.user);
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (!isLoading && user) {
@@ -14,7 +14,7 @@ const Auth = () => {
 				navigate("/");
 			}, 800);
 		}
-	}, [isLoading, user]);
+	}, [user, isLoading]);
 	return (
 		<div className="auth">
 			<AuthForm />

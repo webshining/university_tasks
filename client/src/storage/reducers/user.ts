@@ -1,7 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { decodeToken } from "react-jwt";
-import { authHost, host } from "../../actions/fetch";
-import { User, UserAuthBody, UserPayload, UserState, UserUpdateBody } from "../../types/users";
+import { host } from "../../actions/fetch";
+import { User, UserAuthBody, UserPayload, UserState } from "../../types/users";
 
 const defaultState: UserState = {
 	user: null,
@@ -25,7 +25,7 @@ const refreshUser = createAsyncThunk("user/refresh", async (): Promise<UserPaylo
 });
 
 const loginUser = createAsyncThunk("user/login", async (user: UserAuthBody): Promise<UserPayload> => {
-	const { data } = await host.post("/users", user);
+	const { data } = await host.post("/auth/login", user);
 	if (data.accessToken) {
 		localStorage.setItem("accessToken", data.accessToken);
 		return { user: getUser(data.accessToken), error: null };
@@ -33,8 +33,8 @@ const loginUser = createAsyncThunk("user/login", async (user: UserAuthBody): Pro
 	return { user: null, error: data.error };
 });
 
-const updateUser = createAsyncThunk("user/update", async (user: UserUpdateBody): Promise<UserPayload> => {
-	const { data } = await authHost.put("/users", user);
+const registerUser = createAsyncThunk("user/register", async (user: UserAuthBody): Promise<UserPayload> => {
+	const { data } = await host.post("/auth/register", user);
 	if (data.accessToken) {
 		localStorage.setItem("accessToken", data.accessToken);
 		return { user: getUser(data.accessToken), error: null };
@@ -43,13 +43,7 @@ const updateUser = createAsyncThunk("user/update", async (user: UserUpdateBody):
 });
 
 const logoutUser = createAsyncThunk("user/logout", async (): Promise<UserPayload> => {
-	await host.get("/users/logout");
-	localStorage.removeItem("accessToken");
-	return { user: null, error: null };
-});
-
-const deleteUser = createAsyncThunk("user/delete", async (): Promise<UserPayload> => {
-	await host.delete("/users");
+	await host.get("/auth/logout");
 	localStorage.removeItem("accessToken");
 	return { user: null, error: null };
 });
@@ -90,17 +84,10 @@ export const userSlice = createSlice({
 				state.user = action.payload.user;
 				state.error = action.payload.error;
 			})
-			.addCase(updateUser.pending, (state: UserState) => {
+			.addCase(registerUser.pending, (state: UserState) => {
 				state.isLoading = true;
 			})
-			.addCase(updateUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
-				state.isLoading = false;
-				state.error = action.payload.error;
-			})
-			.addCase(deleteUser.pending, (state: UserState) => {
-				state.isLoading = true;
-			})
-			.addCase(deleteUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
+			.addCase(registerUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
 				state.isLoading = false;
 				state.user = action.payload.user;
 				state.error = action.payload.error;
@@ -108,5 +95,5 @@ export const userSlice = createSlice({
 	},
 });
 
-export const userActions = { ...userSlice.actions, refreshUser, loginUser, logoutUser, updateUser, deleteUser };
+export const userActions = { ...userSlice.actions, refreshUser, loginUser, logoutUser, registerUser };
 export default userSlice.reducer;

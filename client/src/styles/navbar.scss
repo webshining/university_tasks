@@ -6,8 +6,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    will-change: opacity, scale;
     animation: .8s ease appearanceNavBar forwards;
+    will-change: opacity, scale;
     &.disappearance {
         animation: .8s ease disappearanceNavBar forwards;
     }

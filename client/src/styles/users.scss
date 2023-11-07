@@ -4,6 +4,7 @@
     padding: 50px;
     overflow: auto;
     animation: .8s ease appearanceUsers;
+    will-change: opacity, scale;
     &.disappearance {
         animation: .8s ease disappearanceUsers forwards;
     }

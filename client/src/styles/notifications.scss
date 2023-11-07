@@ -8,8 +8,8 @@
     &__item {
         font-size: 18px;
         margin: 10px;
-        will-change: opacity, transform;
         animation: .8s ease appearanceNotification forwards;
+        will-change: opacity, transform;
         &.disappearance {
             animation: .8s ease disappearanceNotification forwards;
         }
