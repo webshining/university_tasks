@@ -11,5 +11,6 @@ const linkParamValidation = [param("link").isString().withMessage("not valid lin
 router.get("/", AuthMiddleware, UserController.many);
 router.get("/:id", AuthMiddleware, idParamValidation, UserController.one);
 router.get("/confirm/:link", linkParamValidation, UserController.confirm);
+router.put("/", AuthMiddleware, UserController.update);
 
 export default router;
