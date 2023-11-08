@@ -15,7 +15,7 @@ export const getUser = (accessToken: string): User => {
 };
 
 const refreshUser = createAsyncThunk("user/refresh", async (): Promise<UserPayload> => {
-	const { data } = await host.get("/users/refresh");
+	const { data } = await host.get("/auth/refresh");
 	if (data.error) {
 		localStorage.removeItem("accessToken");
 		return { user: null, error: data.error };
@@ -68,6 +68,14 @@ export const userSlice = createSlice({
 				state.user = action.payload.user;
 				state.error = action.payload.error;
 			})
+			.addCase(registerUser.pending, (state: UserState) => {
+				state.isLoading = true;
+			})
+			.addCase(registerUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
+				state.isLoading = false;
+				state.user = action.payload.user;
+				state.error = action.payload.error;
+			})
 			.addCase(loginUser.pending, (state: UserState) => {
 				state.isLoading = true;
 			})
@@ -80,14 +88,6 @@ export const userSlice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(logoutUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
-				state.isLoading = false;
-				state.user = action.payload.user;
-				state.error = action.payload.error;
-			})
-			.addCase(registerUser.pending, (state: UserState) => {
-				state.isLoading = true;
-			})
-			.addCase(registerUser.fulfilled, (state: UserState, action: PayloadAction<UserPayload>) => {
 				state.isLoading = false;
 				state.user = action.payload.user;
 				state.error = action.payload.error;

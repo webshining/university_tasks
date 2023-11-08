@@ -2,6 +2,7 @@ export interface User {
 	id: number;
 	name: string;
 	email: string;
+	isConfirmed: boolean;
 	created_at: string;
 	updated_at: string;
 }
@@ -24,8 +25,10 @@ export interface UserAuthBody {
 }
 
 export interface UserUpdateBody {
-	name: string;
-	email: string;
+	name?: string;
+	email?: string;
+	previouspassword?: string;
+	newpassword?: string;
 }
 
 export interface UsersState {

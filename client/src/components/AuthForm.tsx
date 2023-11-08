@@ -14,7 +14,7 @@ const AuthForm = () => {
 	};
 	const onSubmit = async (e: any) => {
 		e.preventDefault();
-		const { payload } = isLogin ? ((await loginUser(values)) as any) : ((await registerUser(values)) as any);
+		const { payload } = (await (isLogin ? loginUser(values) : registerUser(values))) as any;
 		if (payload.error) addNotification({ text: payload.error });
 	};
 	return (

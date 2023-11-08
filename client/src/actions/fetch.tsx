@@ -12,14 +12,12 @@ const authHost = axios.create({
 });
 
 authHost.interceptors.request.use(async (config) => {
-	let accessToken = typeof window !== "undefined" && localStorage.getItem("accessToken");
+	let accessToken = localStorage.getItem("accessToken");
 	if (!accessToken || isExpired(accessToken)) {
 		const { data } = await host.get("/auth/refresh");
 		if (data.accessToken) {
 			accessToken = data.accessToken;
 			localStorage.setItem("accessToken", data.accessToken);
-		} else {
-			localStorage.removeItem("accessToken");
 		}
 	}
 	config.headers.Authorization = `Bearer ${accessToken}`;

@@ -1,22 +1,23 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../actions/redux";
-import NavBar from "../components/NavBar";
 import UsersTable from "../components/UsersTable";
 
 const Users = () => {
-	const { user, isLoading } = useAppSelector((state) => state.user);
+	const { isLoading, user } = useAppSelector((state) => state.user);
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (!isLoading && !user) navigate("/auth");
-	}, [user, isLoading]);
+		if (!isLoading && !user) {
+			document.querySelector(".users")?.classList.add("disappearance");
+			setTimeout(() => {
+				navigate("/auth");
+			}, 800);
+		}
+	}, [isLoading, user]);
 	return (
-		<>
-			<NavBar />
-			<div className="users">
-				<UsersTable />
-			</div>
-		</>
+		<div className="users">
+			<UsersTable />
+		</div>
 	);
 };
 
