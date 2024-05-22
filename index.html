@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан LERO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero {
+            background-image: url('hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar-brand {
+            font-size: 2em;
+        }
+        .menu-item {
+            margin-bottom: 30px;
+        }
+        .testimonial {
+            margin-bottom: 30px;
+        }
+        .event {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">LERO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Головна</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">Меню</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#gallery">Галерея</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Контакти</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Про нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Відгуки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#events">Події</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div>
+            <h1>Ласкаво просимо до LERO</h1>
+            <p>Насолоджуйтесь найкращою кухнею міста</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container mt-5">
+        <div class="text-center">
+            <h2>Меню</h2>
+            <p>Ознайомтесь з нашим смачним меню</p>
+        </div>
+        <div class="row">
+            <!-- Appetizers -->
+            <div class="col-md-4 menu-item">
+                <h4>Закуски</h4>
+                <p>Оливки з сиром фета</p>
+                <p>Тартар з лосося</p>
+                <p>Салат "Цезар"</p>
+            </div>
+            <!-- Main Courses -->
+            <div class="col-md-4 menu-item">
+                <h4>Основні страви</h4>
+                <p>Стейк рібай з соусом демігляс</p>
+                <p>Філе міньйон з картопляним пюре</p>
+                <p>Різотто з морепродуктами</p>
+            </div>
+            <!-- Desserts -->
+            <div class="col-md-4 menu-item">
+                <h4>Десерти</h4>
+                <p>Тірамісу</p>
+                <p>Шоколадний фондан</p>
+                <p>Панна котта з ягідним соусом</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container mt-5">
+        <div class="text-center">
+            <h2>Галерея</h2>
+            <p>Погляньте на наші найкращі моменти</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="gallery1.jpg" class="img-fluid" alt="Gallery Image 1">
+            </div>
+            <div class="col-md-4">
+                <img src="gallery2.jpg" class="img-fluid" alt="Gallery Image 2">
+            </div>
+            <div class="col-md-4">
+                <img src="gallery3.jpg" class="img-fluid" alt="Gallery Image 3">
+            </div>
+            <div class="col-md-4">
+                <img src="gallery4.jpg" class="img-fluid" alt="Gallery Image 4">
+            </div>
+            <div class="col-md-4">
+                <img src="gallery5.jpg" class="img-fluid" alt="Gallery Image 5">
+            </div>
+            <div class="col-md-4">
+                <img src="gallery6.jpg" class="img-fluid" alt="Gallery Image 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mt-5">
+        <div class="text-center">
+            <h2>Контакти</h2>
+            <p>Зв'яжіться з нами</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Адреса</h4>
+                <p>вул. ..., 123, Київ, Україна</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Телефон</h4>
+                <p>+380 ... ... ...</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Форма зворотного зв'язку</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ім'я</label>
+                        <input type="text" class="form-control" id="name" placeholder="Ваше ім'я">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Електронна пошта</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ваш email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Повідомлення</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Ваше повідомлення"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Надіслати</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-5 mb-5">
+        <div class="text-center">
+            <h2>Про нас</h2>
+            <p>Дізнайтесь більше про наш ресторан</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Ресторан LERO – це місце, де поєднуються смачна їжа, приємна атмосфера та високоякісний сервіс. Ми пропонуємо вам найкращі страви з найсвіжіших інгредієнтів. Наша команда завжди рада вітати вас та зробити ваш візит незабутнім.</p>
+            </div>
+            <div class="col-md-6">
+                <p>Наша кухня натхненна найкращими традиціями світової гастрономії. Ми завжди прагнемо до досконалості та раді бачити наших гостей задоволеними. Відвідайте нас, щоб насолодитися неповторною атмосферою та смаком.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container mt-5">
+        <div class="text-center">
+            <h2>Відгуки</h2>
+            <p>Думки наших клієнтів</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 testimonial">
+                <blockquote class="blockquote">
+                    <p class="mb-0">Чудове місце! Їжа була неймовірною, а сервіс - на висоті. Обов'язково повернусь!</p>
+                    <footer class="blockquote-footer">Анна Іванова</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4 testimonial">
+                <blockquote class="blockquote">
+                    <p class="mb-0">Найкращий ресторан в місті! Усі страви були дуже смачні.</p>
+                    <footer class="blockquote-footer">Олександр Петров</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4 testimonial">
+                <blockquote class="blockquote">
+                    <p class="mb-0">Дуже сподобалась атмосфера та привітний персонал. Рекомендую всім!</p>
+                    <footer class="blockquote-footer">Марія Смирнова</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="container mt-5 mb-5">
+        <div class="text-center">
+            <h2>Події</h2>
+            <p>Новини та події в нашому ресторані</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 event">
+                <h4>Майстер-клас з приготування піци</h4>
+                <p>Приходьте до нас 25 травня на майстер-клас з приготування піци від нашого шеф-кухаря!</p>
+            </div>
+            <div class="col-md-4 event">
+                <h4>Жива музика кожної п'ятниці</h4>
+                <p>Насолоджуйтесь живою музикою кожної п'ятниці вечором. Вхід вільний!</p>
+            </div>
+            <div class="col-md-4 event">
+                <h4>Спеціальна вечеря до Дня Святого Валентина</h4>
+                <p>Запрошуємо вас на романтичну вечерю до Дня Святого Валентина. Забронюйте столик заздалегідь!</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
